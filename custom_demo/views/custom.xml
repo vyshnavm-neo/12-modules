@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+         <record model="ir.ui.view" id="custom_form_view">
+                <field name="name">custom.model.form</field>
+                <field name="model">custom.model</field>
+                <field name="arch" type="xml">
+                    <form>
+                        <sheet>
+
+                            <group col="4" string="Personal Details">
+                                <field name="name"/>
+                                 <field name="email" placeholder="demo@gmail.com"/>
+                                <field name="mobile" placeholder="+971123456789"/>
+<!--                                 <field name="image_256" widget="image"/>-->
+                            </group>
+                            <group col="4" string="Physical">
+                                <field name="age"/>
+                                <field name="height" placeholder="Cm"/>
+                                <field name="weight" placeholder="Kg"/>
+                                <field name="blood_group"/>
+
+
+
+                            </group>
+                        </sheet>
+                    </form>
+                </field>
+         </record>
+
+        <record model="ir.ui.view" id="custom_tree_view">
+                <field name="name">custom.model.tree</field>
+                <field name="model">custom.model</field>
+                <field name="arch" type="xml">
+                    <tree>
+                        <field name="name"/>
+                        <field name="age"/>
+                        <field name="height"/>
+                        <field name="weight"/>
+                        <field name="blood_group"/>
+                    </tree>
+                </field>
+         </record>
+
+    <record id="custom_tree_form_view" model="ir.actions.act_window">
+        <field name="name">Demo</field>
+        <field name="res_model">custom.model</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+          <p class="o_view_nocontent_smiling_face">
+            Put your Data here !
+          </p>
+        </field>
+    </record>
+
+  <menuitem id="custom_tree_form_view_demo_menu" name="Demo"/>
+
+    <menuitem id="demo_menu"
+              name="Personal Details"
+              parent="custom_tree_form_view_demo_menu"
+              action="custom_tree_form_view"/>
+
+
+</odoo>

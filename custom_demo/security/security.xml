@@ -1,0 +1,20 @@
+<odoo>
+
+        <record id="custom_group_manager" model="res.groups">
+            <field name="name">user can only see his Data</field>
+        </record>
+
+        <record model="ir.rule" id="user_record_rule">
+            <field name="name">user can only see his Data</field>
+            <field name="model_id" ref="model_custom_model"/>
+            <field name="domain_force">[('name.user_id', '=', user.id)]</field>
+            <field name="groups" eval="[(4, ref('custom_group_manager'))]"/>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="0"/>
+            <field name="perm_create" eval="0"/>
+            <field name="perm_unlink" eval="0"/>
+        </record>
+
+
+
+</odoo>
